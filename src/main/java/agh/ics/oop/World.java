@@ -8,6 +8,7 @@ public class World {
 
     }
 
+
     public static Direction[] change(String[] strings){
         Direction[] directions = new Direction[strings.length];
         for (int i = 0; i < strings.length; i++){
