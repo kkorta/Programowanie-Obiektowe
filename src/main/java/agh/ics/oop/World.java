@@ -2,56 +2,21 @@ package agh.ics.oop;
 
 public class World {
     public static void main(String[] args){
-        System.out.println("system wystartował");
-        run(change(args));
-        System.out.println("system zakończył działanie");
-        Vector2d position1 = new Vector2d(1,2);
-        System.out.println(position1);
-        Vector2d position2 = new Vector2d(-2,1);
-        System.out.println(position2);
-        System.out.println(position1.add(position2));
+        Animal animal = new Animal();
+        OptionParser optionParser = new OptionParser();
+        System.out.println(animal);
+        animal.move(MoveDirection.RIGHT);
+        animal.move(MoveDirection.FORWARD);
+        animal.move(MoveDirection.FORWARD);
+        animal.move(MoveDirection.FORWARD);
+        animal.isAt(new Vector2d(2, 2));
+        System.out.println(animal);
+        String[] strings = {"l", "r", "c", "f", "a"};
+        MoveDirection[] MD = optionParser.parse(strings);
+         for (MoveDirection step: MD){
+             animal.move(step);
+         }
     }
-
-
-    public static Direction[] change(String[] strings){
-        Direction[] directions = new Direction[strings.length];
-        for (int i = 0; i < strings.length; i++){
-            switch (strings[i]){
-                case "f": directions[i] = Direction.FORWARD; break;
-                case "b": directions[i] = Direction.BACKWARD; break;
-                case "l": directions[i] = Direction.LEFT; break;
-                case "r": directions[i] = Direction.RIGHT; break;
-                default: directions[i] = Direction.IGNORE; break;
-            }
-        }
-        return directions;
-    }
-
-    public static void run(Direction[] direction){
-        int len = direction.length;
-        System.out.println("Start");
-        for (int i = 0 ; i < len; i++){
-            read_message(direction[i]);
-            if (i < len - 1){
-                System.out.print(", ");
-            }
-        }
-        System.out.println("");
-        System.out.println("Koniec");
-
-    }
-
-    public static void read_message(Direction direction){
-        String message = switch (direction){
-            case FORWARD -> "Zwierzak idzie do przodu";
-            case BACKWARD -> "Zwierzak idzie do tyłu";
-            case LEFT ->"Zwierzak skręca w lewo";
-            case RIGHT -> "Zwierzak skręca w prawo";
-            default -> "unknown";
-        };
-        System.out.print(message);
-
-    }
-
+    // Można zaimplemetowac inną klase która sprawdzała by czy w danym miejscu jest juz jakies zwierze i zwracalo wartosc true false
 
 }

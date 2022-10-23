@@ -4,8 +4,8 @@ import javax.management.ValueExp;
 import java.util.Objects;
 
 public class Vector2d {
-    public final int x;
-    public final int y;
+    public int x;
+    public int y;
 
     Vector2d(int x, int y){
         this.x = x;
