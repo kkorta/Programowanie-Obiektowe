@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="agh.ics.oop.AnimalTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-10-23T15:51:03" hostname="LAPTOP-4VHLAV8G" time="0.02">
-  <properties/>
-  <testcase name="orientationTest()" classname="agh.ics.oop.AnimalTest" time="0.018"/>
-  <testcase name="positionTest()" classname="agh.ics.oop.AnimalTest" time="0.001"/>
-  <testcase name="BoundariesTest()" classname="agh.ics.oop.AnimalTest" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
