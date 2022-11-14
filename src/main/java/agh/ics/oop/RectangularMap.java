@@ -21,7 +21,7 @@ public class RectangularMap implements IWorldMap{
 
     @Override
     public boolean place(Animal animal) {
-        if (isOccupied(animal.getCoOrdinates())){return false;}
+        if (isOccupied(animal.getPosition())){return false;}
         animals.add(animal);
         return true;
     }

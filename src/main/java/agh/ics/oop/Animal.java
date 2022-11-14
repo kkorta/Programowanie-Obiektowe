@@ -1,19 +1,25 @@
 package agh.ics.oop;
 
-public class Animal{
+import java.util.HashSet;
+
+import java.util.Set;
+
+public class Animal implements IMapElement{
     private MapDirection orientation = MapDirection.NORTH;
     private Vector2d coOrdinates;
+    private final Set<IPositionChangeObserver> observers = new HashSet<>(){};
     private final IWorldMap map;
 
     public Animal(IWorldMap map){
         this.map = map;
         coOrdinates = new Vector2d(2, 2);
+        addObserver((IPositionChangeObserver) map);
     }
     public Animal(IWorldMap map, Vector2d initialPosition){
         this.map = map;
+        addObserver((IPositionChangeObserver) map);
         this.coOrdinates = initialPosition;
     }
-
 
     @Override
     public String toString() {
@@ -24,7 +30,7 @@ public class Animal{
             case WEST -> "W";
         };
     }
-    public Vector2d getCoOrdinates() {
+    public Vector2d getPosition() {
         return coOrdinates;
     }
     public MapDirection getOrientation(){
@@ -61,5 +67,24 @@ public class Animal{
                 break;
         }
 
+    }
+
+    void changePosition(Vector2d oldPosition, Vector2d newPosition) {
+        coOrdinates = newPosition;
+        positionChanged(oldPosition, newPosition);
+    }
+
+    void addObserver(IPositionChangeObserver observer) {
+        this.observers.add(observer);
+    }
+
+    void removeObserver(IPositionChangeObserver observer) {
+        this.observers.remove(observer);
+    }
+
+    void positionChanged(Vector2d oldPosition, Vector2d newPosition) {
+        for (IPositionChangeObserver observer: observers) {
+            observer.positionChanged(oldPosition, newPosition);
+        }
     }
 }
