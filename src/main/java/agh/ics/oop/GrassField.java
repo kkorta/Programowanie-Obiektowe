@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class GrassField extends AbstractWorldMap{
     private final int grassNum;
-    private List<Grass> grassList;
+    public List<Grass> grassList;
     private final int maxGrassRange;
     private final int minGrassRange;
 
@@ -22,6 +22,7 @@ public class GrassField extends AbstractWorldMap{
                     break;
             }
         }
+
     }
 
 

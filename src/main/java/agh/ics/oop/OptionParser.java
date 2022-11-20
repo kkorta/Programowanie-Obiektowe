@@ -9,22 +9,25 @@ public class OptionParser {
             switch (strings[i]){
                 case "f", "forward":
                     MD[i] = MoveDirection.FORWARD;
+                    counter++;
                     break;
                 case "b", "backward":
                     MD[i] = MoveDirection.BACKWARD;
+                    counter++;
                     break;
                 case "r", "right":
                     MD[i] = MoveDirection.RIGHT;
+                    counter++;
                     break;
                 case "l", "left":
                     MD[i] = MoveDirection.LEFT;
-                    break;
-                default:
                     counter++;
                     break;
+                default:
+                    throw new IllegalArgumentException(strings[i] + " is not a valid move keyword");
             }
         }
-        MoveDirection[] result = new MoveDirection[len - counter];
+        MoveDirection[] result = new MoveDirection[counter];
         int j = 0;
         for (int i = 0; i < len; i++){
             if (MD[i] != null){

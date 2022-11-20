@@ -7,6 +7,7 @@ public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObse
     protected Map<Vector2d, Animal> animals = new LinkedHashMap<>();
     protected Vector2d upperRight;
     protected Vector2d lowerLeft;
+    protected MapBoundary mapBorder = new MapBoundary();
 
 
     public AbstractWorldMap(int x1, int y1, int x2, int y2){
@@ -27,9 +28,11 @@ public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObse
     public boolean place(Animal animal) {
         if (canMoveTo(animal.getPosition())) {
             animals.put(animal.getPosition(), animal);
+            animal.addObserver(mapBorder);
+            mapBorder.addElement(animal.getPosition());
             return true;
         }
-        return false;
+        throw new IllegalArgumentException(animal.getPosition() + " is not a valid position to place to");
     }
     public boolean isOccupied(Vector2d position) {
         return objectAt(position) instanceof Animal;

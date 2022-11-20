@@ -1,5 +1,7 @@
 package agh.ics.oop;
 
+import agh.ics.oop.gui.App;
+
 import java.util.ArrayList;
 
 public class SimulationEngine implements IEngine{
@@ -33,5 +35,8 @@ public class SimulationEngine implements IEngine{
             animals.get(i % n).move(MD[i]);}
         }
 
+    }
+
+    public void addObserver(App app) {
     }
 }
