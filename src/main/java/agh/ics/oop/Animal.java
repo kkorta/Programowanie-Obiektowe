@@ -87,4 +87,13 @@ public class Animal implements IMapElement{
             observer.positionChanged(oldPosition, newPosition);
         }
     }
+    @Override
+    public String getFileName() {
+        return switch (this.orientation) {
+            case NORTH -> "up.png";
+            case EAST -> "right.png";
+            case SOUTH -> "down.png";
+            case WEST -> "left.png";
+        };
+    }
 }

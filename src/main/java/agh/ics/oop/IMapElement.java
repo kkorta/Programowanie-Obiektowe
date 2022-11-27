@@ -15,4 +15,5 @@ public interface IMapElement {
      * @return The string representing an element.
      */
     String toString();
+    String getFileName();
 }

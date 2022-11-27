@@ -4,7 +4,7 @@ import java.util.*;
 
 public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObserver{
     protected MapVisualizer visualizer = new MapVisualizer(this);
-    protected Map<Vector2d, Animal> animals = new LinkedHashMap<>();
+    public Map<Vector2d, Animal> animals = new LinkedHashMap<>();
     protected Vector2d upperRight;
     protected Vector2d lowerLeft;
     protected MapBoundary mapBorder = new MapBoundary();
