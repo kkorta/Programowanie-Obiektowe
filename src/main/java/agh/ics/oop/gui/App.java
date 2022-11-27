@@ -18,7 +18,6 @@ public class App extends Application {
     private int height = 50;
     private int width = 50;
 
-
     public void init() {
         try{
             String[] params = getParameters().getRaw().toArray(new String[0]);
